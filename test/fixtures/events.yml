@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  team: false
+  kind: MyString
+
+two:
+  name: MyString
+  team: false
+  kind: MyString

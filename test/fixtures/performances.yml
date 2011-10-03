@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event: 
+  place: 1
+  mark: 1
+  meet: 
+
+two:
+  event: 
+  place: 1
+  mark: 1
+  meet: 

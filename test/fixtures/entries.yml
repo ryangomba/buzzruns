@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  athlete: 
+  milage: 1
+  notes: MyText
+  date: 2011-10-03
+
+two:
+  athlete: 
+  milage: 1
+  notes: MyText
+  date: 2011-10-03
