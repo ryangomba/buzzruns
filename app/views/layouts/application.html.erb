@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Buzzruns</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>BuzzRuns</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>    
+<link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 <body>
-
-<%= yield %>
-
+    <div class="wrapper">
+        <div id="header">
+            <h1><a href="/">BuzzRuns</a></h1>
+            <h2><a href="#">Link1</a></h2>
+            <h2><a href="#">Link2</a></h2>
+            <h2><a href="#">Link3</a></h2>
+            <h2><a href="#">Link4</a></h2>
+        </div>
+        <div id="content">
+            <%= yield %>
+        </div>
+    </div>
 </body>
 </html>
+
