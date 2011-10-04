@@ -69,26 +69,46 @@ div#header {
     position: relative;
     margin-top: 40px;
     height: 100px;
-}
-div#header h1 {
-    font-size: 30px;
-    font-weight: bold;
-    float: left;
-}
-div#header h2 {
-    float: right;
-    line-height: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 20px;
-}
-div#header h2 a {
-    color: #999;
-}
-div#header h2 a:hover {
-    color: #444;
-}
-div#header h1 span.lighter {
-    color: #ccc;
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        left: 0px;
+    }
+    div#navbar {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+        div.nav-section {
+            display: inline;
+            position: relative;
+            margin-left: 20px;
+            a {
+                color: #999;
+                font-size: 20px;
+                font-weight: bold;
+                &:hover {
+                    color: #444;
+                }
+            }
+            ul {
+                display:none;
+                position: absolute;
+                left: 0px;
+                padding: 15px 0px;
+                li a {
+                    padding-bottom: 10px;
+                    float: left;
+                    font-size: 16px;
+                }
+                &:hover {
+                    display: block;
+                }
+            }
+            &:hover ul {
+                display: block;
+            }
+        }
+    }
 }
 
