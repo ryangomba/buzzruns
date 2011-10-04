@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003220111) do
+ActiveRecord::Schema.define(:version => 20111003233225) do
 
   create_table "athletes", :force => true do |t|
     t.string   "firstname"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111003220111) do
 
   create_table "entries", :force => true do |t|
     t.integer  "athlete_id"
-    t.integer  "milage"
+    t.integer  "mileage"
     t.text     "notes"
     t.date     "date"
     t.datetime "created_at"
@@ -70,11 +70,12 @@ ActiveRecord::Schema.define(:version => 20111003220111) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "hashed_password"
     t.integer  "athlete_id"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "salt"
   end
 
   add_index "users", ["athlete_id"], :name => "index_users_on_athlete_id"
