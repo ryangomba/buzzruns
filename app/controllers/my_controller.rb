@@ -1,15 +1,21 @@
 class MyController < ApplicationController
 
-    def index
-        redirect_to :action => 'journal'
+    def profile
+        redirect_to :controller => 'athlete',
+                    :action => 'athlete#profile',
+                    :id => session[:user].id
     end
 
     def journal
-        # bla
+        redirect_to :controller => 'athlete',
+                    :action => 'athlete#journal',
+                    :id => session[:user].id
     end
 
     def performances
-        # bla
+        redirect_to :controller => 'athlete',
+                    :action => 'athlete#performances',
+                    :id => session[:user].id
     end
 
 end
