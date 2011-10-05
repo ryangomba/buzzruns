@@ -1,23 +1,42 @@
 Buzzruns::Application.routes.draw do
 
     root :to => "home#index"
-   
-    
-    get "admin/athletes"
-    get "admin/performances"
-    get "admin/mileage"
-    
+
     resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
     match "athletes/:id/performances" => "athletes#performances"
+
+    # Logged-in Athlete
 
     match 'my/dashboard' => 'my#dashboard'
     match 'my/journal' => 'my#journal'
     match 'my/performances' => 'my#performances'
 
+    # Performances
+
+    resources :performances
+    get "performances/calendar"
+    get "performances/year"
+    get "performances/season"
+
+    # Meets
+
+    resources :meets
+
+    # Events
+
+    resources :events
+
+    # Admin Views
+
+    get "admin/athletes"
+    get "admin/milage"
+    get "admin/performances"
+
+    # Authentication
+
     match 'login' => 'sessions#create'
     match 'logout' => 'sessions#destroy'
-
     get "sessions_path", :to => "sessions#create"
 
     # Sample of regular route:

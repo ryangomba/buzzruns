@@ -12,37 +12,64 @@
         <div id="header">
             <h1><a href="/">BuzzRuns</a></h1>
             <div id="navbar">
+
+                <% @user = current_user() %>
+
+                <!-- PRIVILEGED VIEWS -->
+
+                <% if !@user.nil? %>
                 <div class="nav-section">
-                    <a href="/my/dashboard/">Athlete</a>
+                    <a href="/my/dashboard/"><%= @user.login %></a>
                     <ul>
                         <li><a href="/my/dashboard/">Dashboard</a></li>
-                        <li><a href="/my/journal/">Journal</a></li>
+
+                        <!-- ATHLETE VIEWS -->
+
+                        <% if is_athlete(@user) %>
+                        <li><a href="/my/journal/">Running Log</a></li>
                         <li><a href="/my/performances/">Performances</a></li>
+                        <% end %>
+
+                        <!-- ADMIN VIEWS -->
+
+                        <% if is_admin(@user) %>
+                        <li><a href="/admin/milage/">+ Milage</a></li>
+                        <li><a href="/admin/performances/">+ Performances</a></li>
+                        <li><a href="/admin/athletes/">- Athletes</a></li>
+                        <li><a href="/meets/">- Meets</a></li>
+                        <li><a href="/events/">- Events</a></li>
+                        <% end %>
+
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
-                <div class="nav-section">
-                    <a href="/admin/">Admin</a>
-                    <ul>
-                        <li><a href="/admin/milage/">Milage</a></li>
-                        <li><a href="/admin/performances/">Performances</a></li>
-                        <li><a href="/admin/athletes/">Athletes</a></li>
-                    </ul>
-                </div>
-                <div class="nav-section">
-                    <a href="/meets/">Meets</a>
-                </div>
-                <div class="nav-section">
-                    <a href="/performances/records/">Records</a>
-                </div>
-                <div class="nav-section">
-                    <a href="/blog/">Blog</a>
-                </div>
+
+                <!-- AUTHENTICATION -->
+
+                <% else %>
                 <div class="nav-section">
                     <a href="/login">Login</a>
                 </div>
+                <% end %>
+
+                <!-- GLOBAL VIEWS -->
+
                 <div class="nav-section">
-                    <a href="/logout">Logout</a>
+                    <a href="/athletes/">Athletes</a>
                 </div>
+
+                <div class="nav-section">
+                    <a href="/meets/">Meets</a>
+                </div>
+
+                <div class="nav-section">
+                    <a href="/performances/">Records</a>
+                </div>
+
+                <div class="nav-section">
+                    <a href="/blog/">Blog</a>
+                </div>
+
             </div>
         </div>
         <div id="content">

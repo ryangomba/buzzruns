@@ -1,0 +1,16 @@
+<div class="split left">
+    <h1>All Events (<%= @events.length %>)</h1>
+    <% @events.each do |e| %>
+        <%= e.name %>
+        <%= e.kind %>
+        <%= e.team %>
+        <%= Performance.where(:event_id => e.id).count %>
+        <%= link_to 'Edit', edit_event_path(e.id) %>
+        <%= link_to 'Delete', event_path(e.id), :confirm => 'Are you sure?', :method => 'delete' %>       
+        <br/>
+    <% end %>
+</div>
+
+<div class="split right">
+    <%= render 'form' %>
+</div>

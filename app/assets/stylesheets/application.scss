@@ -66,7 +66,15 @@ a {
 /* LAYOUTS */
 
 div.split {
-    width: 450px;
+    &.half {
+        width: 450px;
+    }
+    &.left {
+        width: 600px;
+    }
+    &.right {
+        width: 300px;
+    }
     float: left;
     &:last-child {
         float: right;
@@ -104,11 +112,14 @@ div#header {
             ul {
                 display:none;
                 position: absolute;
+                background-color: #fff;
                 left: 0px;
                 padding: 15px 0px;
+                white-space: nowrap;
                 li a {
                     padding-bottom: 10px;
                     float: left;
+                    clear: both;
                     font-size: 16px;
                 }
                 &:hover {
