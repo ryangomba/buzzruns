@@ -2,8 +2,6 @@ Buzzruns::Application.routes.draw do
 
     root :to => "home#index"
 
-    # Standard Athlete
-
     resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
     match "athletes/:id/performances" => "athletes#performances"
