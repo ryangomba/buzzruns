@@ -1,2 +1,9 @@
-<h1>Performances#index</h1>
-<p>Find me in app/views/performances/index.html.erb</p>
+<h1>All <%= @performances.length %> Performances</h1>
+
+<!-- FOR EACH PERFORMANCE -->
+
+<% @performances.each do |p| %>
+    <%= p.id %>
+    <%= link_to 'Edit', edit_performance_path(p.id) %>
+    <%= link_to 'Delete', performance_path(p.id), :confirm => 'Are you sure?', :method => 'delete' %>
+<% end %>

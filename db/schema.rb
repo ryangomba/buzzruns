@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111005032657) do
 
   create_table "entries", :force => true do |t|
     t.integer  "athlete_id"
-    t.integer  "mileage"
+    t.integer  "milage"
     t.text     "notes"
     t.date     "date"
     t.datetime "created_at"

@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+    ##### AUTHENTICATION
+
+    def is_athlete(user)
+        !user.nil? and !user.athlete_id.nil?
+    end
+
+    def is_admin(user)
+        !user.nil? and user.admin == true
+    end
+
     ##### A training year (July 1 to June 31)
     ##### e.g. TraingYear(2011) -> 7/1/10-6/31/11
 
