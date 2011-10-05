@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-    before_filter :check_admin
+    before_filter :check_admin, :only => [:milage, :performances]
     include ApplicationHelper
     def athletes
         redirect_to :controller => 'athletes',
