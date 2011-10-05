@@ -1,7 +1,11 @@
 Buzzruns::Application.routes.draw do
 
     root :to => "home#index"
-
+   
+    
+    get "admin/athletes"
+    get "admin/performances"
+    get "admin/mileage"
     
     resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
