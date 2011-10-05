@@ -1,37 +1,41 @@
 Buzzruns::Application.routes.draw do
 
-  get "meets/index"
-
-  get "meets/show"
-
-  get "meets/new"
-
-  get "meets/create"
-
-  get "meets/edit"
-
-  get "meets/destroy"
-
     root :to => "home#index"
-    
+
+    # Standard Athlete
+
     resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
     match "athletes/:id/performances" => "athletes#performances"
 
+    # Logged-in Athlete
+
     match 'my/dashboard' => 'my#dashboard'
     match 'my/journal' => 'my#journal'
     match 'my/performances' => 'my#performances'
+
+    # Performances
 
     resources :performances
     get "performances/calendar"
     get "performances/year"
     get "performances/season"
 
+    # Meets
+
     resources :meets
+
+    # Events
+
+    resources :events
+
+    # Admin Views
 
     get "admin/athletes"
     get "admin/milage"
     get "admin/performances"
+
+    # Authentication
 
     match 'login' => 'sessions#create'
     match 'logout' => 'sessions#destroy'
