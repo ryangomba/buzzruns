@@ -1,5 +1,17 @@
 Buzzruns::Application.routes.draw do
 
+  get "meets/index"
+
+  get "meets/show"
+
+  get "meets/new"
+
+  get "meets/create"
+
+  get "meets/edit"
+
+  get "meets/destroy"
+
     root :to => "home#index"
     
     resources :athletes
@@ -14,6 +26,8 @@ Buzzruns::Application.routes.draw do
     get "performances/calendar"
     get "performances/year"
     get "performances/season"
+
+    resources :meets
 
     get "admin/athletes"
     get "admin/milage"
