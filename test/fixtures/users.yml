@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  username: MyString
+  login: MyString
   password: MyString
-  athlete: 
   admin: false
+  athlete: 
 
 two:
-  username: MyString
+  login: MyString
   password: MyString
-  athlete: 
   admin: false
+  athlete: 

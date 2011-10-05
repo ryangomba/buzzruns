@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003233225) do
+ActiveRecord::Schema.define(:version => 20111004232318) do
 
   create_table "athletes", :force => true do |t|
     t.string   "firstname"
@@ -69,13 +69,12 @@ ActiveRecord::Schema.define(:version => 20111003233225) do
   add_index "performances", ["meet_id"], :name => "index_performances_on_meet_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "hashed_password"
-    t.integer  "athlete_id"
+    t.string   "login"
+    t.string   "password_digest"
     t.boolean  "admin"
+    t.integer  "athlete_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "salt"
   end
 
   add_index "users", ["athlete_id"], :name => "index_users_on_athlete_id"

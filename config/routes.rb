@@ -1,17 +1,20 @@
 Buzzruns::Application.routes.draw do
 
-    get "user/login"
+    root :to => "home#index"
 
-    get "user/logout"
+    match "athletes" => "athletes#index"
+    match "athletes/:id" => "athletes#profile"
+    match "athletes/:id/journal" => "athletes#journal"
+    match "athletes/:id/performances" => "athletes#performances"
 
-    get "user/delete"
+    match 'my/profile' => 'my#profile'
+    match 'my/journal' => 'my#journal'
+    match 'my/performances' => 'my#performances'
 
-    get "user/edit"
+    match 'login' => 'sessions#create'
+    match 'logout' => 'sessions#destroy'
 
-    get "home/index"
-
-    # The priority is based upon order of creation:
-    # first created -> highest priority.
+    get "sessions_path", :to => "sessions#create"
 
     # Sample of regular route:
     #   match 'products/:id' => 'catalog#view'
@@ -57,13 +60,6 @@ Buzzruns::Application.routes.draw do
     #     resources :products
     #   end
 
-    # You can have the root of your site routed with "root"
-    # just remember to delete public/index.html.
-    root :to => 'home#index'
-
     # See how all your routes lay out with "rake routes"
-
-    # This is a legacy wild controller route that's not recommended for RESTful applications.
-    # Note: This route will make all actions in every controller accessible via GET requests.
-    # match ':controller(/:action(/:id(.:format)))'
+    
 end
