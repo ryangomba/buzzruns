@@ -66,7 +66,15 @@ a {
 /* LAYOUTS */
 
 div.split {
-    width: 450px;
+    &.half {
+        width: 450px;
+    }
+    &.left {
+        width: 600px;
+    }
+    &.right {
+        width: 300px;
+    }
     float: left;
     &:last-child {
         float: right;
@@ -111,6 +119,7 @@ div#header {
                 li a {
                     padding-bottom: 10px;
                     float: left;
+                    clear: both;
                     font-size: 16px;
                 }
                 &:hover {
