@@ -12,6 +12,13 @@
         <div id="header">
             <h1><a href="/">BuzzRuns</a></h1>
             <div id="navbar">
+
+                <% @user = session[:user_id] %>
+                <% if @user then @user = User.find(@user) end %>
+
+                <!-- ATHLETE-SPECIFIC VIEWS -->
+
+                <% if is_athlete(@user) %>
                 <div class="nav-section">
                     <a href="/my/dashboard/">Athlete</a>
                     <ul>
@@ -20,6 +27,11 @@
                         <li><a href="/my/performances/">Performances</a></li>
                     </ul>
                 </div>
+                <% end %>
+
+                <!-- ADMIN-SPECIFIC VIEWS -->
+
+                <% if is_admin(@user) %>
                 <div class="nav-section">
                     <a href="/admin/">Admin</a>
                     <ul>
@@ -28,21 +40,34 @@
                         <li><a href="/admin/athletes/">Athletes</a></li>
                     </ul>
                 </div>
+                <% end %>
+
+                <!-- GLOBAL VIEWS -->
+
                 <div class="nav-section">
                     <a href="/meets/">Meets</a>
                 </div>
+
                 <div class="nav-section">
                     <a href="/performances/records/">Records</a>
                 </div>
+
                 <div class="nav-section">
                     <a href="/blog/">Blog</a>
                 </div>
+
+                <!-- AUTHENTICATION -->
+
+                <% if @user.nil? %>
                 <div class="nav-section">
                     <a href="/login">Login</a>
                 </div>
+                <% else %>
                 <div class="nav-section">
                     <a href="/logout">Logout</a>
                 </div>
+                <% end %>
+
             </div>
         </div>
         <div id="content">

@@ -1,0 +1,9 @@
+<h1>All <%= @performances.length %> Performances</h1>
+
+<!-- FOR EACH PERFORMANCE -->
+
+<% @performances.each do |p| %>
+    <%= p.id %>
+    <%= link_to 'Edit', edit_performance_path(p.id) %>
+    <%= link_to 'Delete', performance_path(p.id), :confirm => 'Are you sure?', :method => 'delete' %>
+<% end %>
