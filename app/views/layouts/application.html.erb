@@ -15,58 +15,55 @@
 
                 <% @user = session[:user_id] %>
                 <% if @user then @user = User.find(@user) end %>
+                <% if !@user.nil? %>
 
                 <!-- ATHLETE-SPECIFIC VIEWS -->
 
-                <% if is_athlete(@user) %>
                 <div class="nav-section">
-                    <a href="/my/dashboard/">Athlete</a>
+                    <a href="/my/dashboard/"><%= @user.login %></a>
                     <ul>
                         <li><a href="/my/dashboard/">Dashboard</a></li>
-                        <li><a href="/my/journal/">Journal</a></li>
+
+                        <% if is_athlete(@user) %>
+                        <li><a href="/my/journal/">Running Log</a></li>
                         <li><a href="/my/performances/">Performances</a></li>
+                        <% end %>
+
+                        <% if is_admin(@user) %>
+                        <li><a href="/admin/milage/">+ Milage</a></li>
+                        <li><a href="/admin/performances/">+ Performances</a></li>
+                        <li><a href="/admin/athletes/">+ Athletes</a></li>
+                        <% end %>
+
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
-                <% end %>
 
-                <!-- ADMIN-SPECIFIC VIEWS -->
+                <!-- AUTHENTICATION -->
 
-                <% if is_admin(@user) %>
+                <% else %>
                 <div class="nav-section">
-                    <a href="/admin/">Admin</a>
-                    <ul>
-                        <li><a href="/admin/milage/">Milage</a></li>
-                        <li><a href="/admin/performances/">Performances</a></li>
-                        <li><a href="/admin/athletes/">Athletes</a></li>
-                    </ul>
+                    <a href="/login">Login</a>
                 </div>
                 <% end %>
 
                 <!-- GLOBAL VIEWS -->
 
                 <div class="nav-section">
+                    <a href="/athletes/">Athletes</a>
+                </div>
+
+                <div class="nav-section">
                     <a href="/meets/">Meets</a>
                 </div>
 
                 <div class="nav-section">
-                    <a href="/performances/records/">Records</a>
+                    <a href="/performances/">Records</a>
                 </div>
 
                 <div class="nav-section">
                     <a href="/blog/">Blog</a>
                 </div>
-
-                <!-- AUTHENTICATION -->
-
-                <% if @user.nil? %>
-                <div class="nav-section">
-                    <a href="/login">Login</a>
-                </div>
-                <% else %>
-                <div class="nav-section">
-                    <a href="/logout">Logout</a>
-                </div>
-                <% end %>
 
             </div>
         </div>

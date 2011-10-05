@@ -2,7 +2,7 @@ class MyController < ApplicationController
 
     def dashboard
         redirect_to :controller => 'athletes',
-                    :action => 'dashboard',
+                    :action => 'show',
                     :id => session[:user_id]
     end
 
