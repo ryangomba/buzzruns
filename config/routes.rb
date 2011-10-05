@@ -1,11 +1,5 @@
 Buzzruns::Application.routes.draw do
 
-  get "admin/athletes"
-
-  get "admin/milage"
-
-  get "admin/performances"
-
     root :to => "home#index"
 
     
@@ -16,6 +10,11 @@ Buzzruns::Application.routes.draw do
     match 'my/dashboard' => 'my#dashboard'
     match 'my/journal' => 'my#journal'
     match 'my/performances' => 'my#performances'
+
+    match 'login' => 'sessions#create'
+    match 'logout' => 'sessions#destroy'
+
+    get "sessions_path", :to => "sessions#create"
 
     # Sample of regular route:
     #   match 'products/:id' => 'catalog#view'
