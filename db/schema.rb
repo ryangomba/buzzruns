@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20111005032657) do
 
   create_table "entries", :force => true do |t|
     t.integer  "athlete_id"
-    t.integer  "milage"
+    t.integer  "mileage"
     t.text     "notes"
     t.date     "date"
     t.datetime "created_at"
@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(:version => 20111005032657) do
   add_index "performances", ["meet_id"], :name => "index_performances_on_meet_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.integer  "athlete_id"
+    t.string   "login"
+    t.string   "password_digest"
     t.boolean  "admin"
+    t.integer  "athlete_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -19,6 +19,10 @@ Buzzruns::Application.routes.draw do
     get "admin/milage"
     get "admin/performances"
 
+    match 'login' => 'sessions#create'
+    match 'logout' => 'sessions#destroy'
+    get "sessions_path", :to => "sessions#create"
+
     # Sample of regular route:
     #   match 'products/:id' => 'catalog#view'
     # Keep in mind you can assign values other than :controller and :action

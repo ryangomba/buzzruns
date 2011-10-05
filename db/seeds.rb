@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+
+dougblack = Athlete.create(:firstname=>"Doug", :lastname=>"Black", :sex=>"Male", :year=>2013, :metrics=>"000")
+ryangomba = Athlete.create(:firstname=>"Ryan", :lastname=>"Gomba", :sex=>"Male", :year=>2012, :metrics=>"000")

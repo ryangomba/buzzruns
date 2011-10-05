@@ -18,4 +18,12 @@ class Athlete < ActiveRecord::Base
     def set_active(date, is_active)
     end
 
+    validates :firstname, :lastname, :sex, :year, :metrics, :presence => true
+
+    after_create :make_new_user
+
+    def make_new_user
+        User.create(:login=>self.firstname, :password=>"Jackets", :admin=>false, :athlete_id=>self.id)
+    end
+
 end
