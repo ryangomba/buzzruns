@@ -2,12 +2,12 @@ Buzzruns::Application.routes.draw do
 
     root :to => "home#index"
 
-    match "athletes" => "athletes#index"
-    match "athletes/:id" => "athletes#profile"
+    
+    resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
     match "athletes/:id/performances" => "athletes#performances"
 
-    match 'my/profile' => 'my#profile'
+    match 'my/dashboard' => 'my#dashboard'
     match 'my/journal' => 'my#journal'
     match 'my/performances' => 'my#performances'
 
