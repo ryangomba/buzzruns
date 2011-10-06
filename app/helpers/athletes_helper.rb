@@ -32,4 +32,15 @@ module AthletesHelper
         return response
     end
 
+    def get_milage_array(timespan, entries)
+        milage_array = []
+        timespan.each do |day|
+            if day.wday == 0
+                entry = entries.find_by_date(day)
+                milage_array.push(entry ? entry.milage : 0)
+            end
+        end
+        return milage_array
+    end
+
 end
