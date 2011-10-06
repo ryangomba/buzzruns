@@ -1,1 +1,39 @@
-Viewing journal for athlete <%= @athlete.id %>
+<div id="calendar">
+
+    <% make_weekly_journal(@timespan, @entries, @performances).each_pair do |year, months| %>
+        <h2><%= year %></h2>
+        <% months.each_pair do |month, weeks| %>
+
+            <h2><%= month %></h2>
+            <ul>
+            <% weeks.each do |week| %>
+
+                <li class="highlighted">
+
+                    <h4><%= "%02d" % week.date.day %></h4>
+                    <h3><%= week.entry ? week.entry.milage : '--' %></h3>
+
+                    <% unless week.performances.empty? %>
+                    <div class="performance">
+                        <div class="event">(5) 800m</div>
+                        <div class="mark pr">1:53.01</div>
+                    </div>
+                    <% end %>
+
+                    <% if week.entry and week.entry.notes %>
+                    <div class="journal">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur gravida dolor ut erat pharetra eu sagittis odio luctus.</p>
+                        <p>In aliquet, ligula eget bibendum porttitor, mauris sapien dignissim nunc,</p>
+                        <p>Mauris in magna quis justo rhoncus convallis id quis justo.</p>
+                    </div>
+                    <% end %>
+
+                </li>
+
+            <% end %>
+            </ul>
+
+        <% end %>
+    <% end %>
+
+</div>
