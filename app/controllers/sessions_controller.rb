@@ -4,8 +4,11 @@ class SessionsController < ApplicationController
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             redirect_to root_path, :notice => "Logged in!"
-        else
+        elsif params[:login]
             params[:notice] = "Invalid login or password"
+            render "new"
+        else
+            params[:notice] = "Please log in" 
             render "new"
         end
     end

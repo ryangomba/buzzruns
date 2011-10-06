@@ -12,13 +12,6 @@ class AthletesController < ApplicationController
         @athlete = Athlete.find(params[:id])
     end
 
-    def journal
-        @athlete = Athlete.find(params[:id])
-        @timespan = (@athlete.start_date..Date.current)
-        @entries = Entry.where(:athlete_id => params[:id])
-        @performances = Performance.joins(:athletes).where(:athletes => {:id => params[:id]})
-    end
-
     def performances
         @athlete = Athlete.find(params[:id])
     end
