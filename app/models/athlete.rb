@@ -1,9 +1,15 @@
+require 'dates'
+
 class Athlete < ActiveRecord::Base
 
     has_and_belongs_to_many :performances
 
     def entry_year
         return self[:year] - 4
+    end
+
+    def start_date
+        return TrainingYear.new(self.entry_year + 1).period.first
     end
 
     def milage(date)
