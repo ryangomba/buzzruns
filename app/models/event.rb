@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
 
     KINDS = ['track', 'field']
 
-    validates :name, :kind, :presence => true
+    validates_presence_of :name, :team, :kind
     validates_inclusion_of :kind, :in => KINDS
 
     def to_s

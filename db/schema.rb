@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009052353) do
+ActiveRecord::Schema.define(:version => 20111009120657) do
 
   create_table "athletes", :force => true do |t|
     t.string   "firstname"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20111009052353) do
     t.date     "date"
     t.boolean  "pr",          :default => false
     t.integer  "athlete_id"
+    t.string   "heat_type",   :default => "final"
   end
 
   add_index "performances", ["event_id"], :name => "index_performances_on_event_id"

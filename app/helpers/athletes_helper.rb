@@ -22,9 +22,13 @@ module AthletesHelper
 
         timespan.each do |day|
             if day.wday == 0
-                entry = entries.find_by_date(day)
-                p = performances.find(:all, :conditions => ["date between ? and ?", day, day.change(:day => 6)])
-                this = JournalWeek.new(day, entry, p)
+                entry = get_entry_for_day(entries, day)
+                weekspan = (day..(day+6))
+                ps = []
+                performances.each do |p|
+                    if weekspan === p.date then ps.push(p) end
+                end
+                this = JournalWeek.new(day, entry, ps)
                 response[day.year][day.strftime("%B")].push(this)
             end
         end
@@ -36,11 +40,18 @@ module AthletesHelper
         milage_array = []
         timespan.each do |day|
             if day.wday == 0
-                entry = entries.find_by_date(day)
+                entry = get_entry_for_day(entries, day)
                 milage_array.push(entry ? entry.milage : 0)
             end
         end
         return milage_array
+    end
+
+    def get_entry_for_day(entries, day)
+        entries.each do |e|
+            if e.date == day then return e end
+        end
+        return nil
     end
 
 end

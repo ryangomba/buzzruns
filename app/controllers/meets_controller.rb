@@ -19,6 +19,11 @@ class MeetsController < ApplicationController
             if @meet.save
                 format.html { redirect_to @meet, :notice => 'Meet was successfully created.' }
                 format.json { render :json => @meet, :status => :created, :location => @meet }
+            elsif !@meet.errors[:id].nil?
+                puts 'Meet already exists'
+                format.html { render :action => "new" }
+                format.json { render :json => @meet.errors,
+                    :status => :found }
             else
                 format.html { render :action => "new" }
                 format.json { render :json => @meet.errors, :status => :unprocessable_entity }
