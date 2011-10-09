@@ -21,9 +21,8 @@ class AthletesController < ApplicationController
         start_date = params[:start] ? params[:start].to_date : @athlete.start_date
         end_date = params[:end] ? params[:end].to_date : Date.current
         @timespan = (start_date..end_date)
-        @entries = Entry.where(:athlete_id => params[:id], :date => @timespan)
-        @performances = Performance.where(:athlete_id => :params[:id],
-                                          :date => @timespan)
+        @entries = Entry.where({:athlete_id => params[:id], :date => @timespan})
+        @performances = Performance.where({:athlete_id => params[:id], :date => @timespan})
     end
 
     def performances
