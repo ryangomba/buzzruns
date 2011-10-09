@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111006030956) do
+ActiveRecord::Schema.define(:version => 20111009052353) do
 
   create_table "athletes", :force => true do |t|
     t.string   "firstname"
@@ -21,11 +21,7 @@ ActiveRecord::Schema.define(:version => 20111006030956) do
     t.string   "metrics"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "athletes_performances", :id => false, :force => true do |t|
-    t.integer "athlete_id"
-    t.integer "performance_id"
+    t.integer  "tfrrs_id"
   end
 
   create_table "entries", :force => true do |t|
@@ -45,16 +41,17 @@ ActiveRecord::Schema.define(:version => 20111006030956) do
     t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "aliases"
   end
 
   create_table "meets", :force => true do |t|
     t.string   "name"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.date     "date"
     t.string   "city"
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tfrrs_id"
   end
 
   create_table "performances", :force => true do |t|
@@ -66,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20111006030956) do
     t.datetime "updated_at"
     t.integer  "season_type", :default => 2
     t.date     "date"
+    t.boolean  "pr",          :default => false
+    t.integer  "athlete_id"
   end
 
   add_index "performances", ["event_id"], :name => "index_performances_on_event_id"

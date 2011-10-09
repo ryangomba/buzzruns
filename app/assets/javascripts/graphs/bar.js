@@ -7,19 +7,18 @@ $(document).ready(function(){
 	var w = 900,
 	    h = 300,
         x = d3.scale.ordinal().domain(d3.range(data.length)).rangeBands([0, w], .2),
-        y = d3.scale.linear().domain([0, d3.max(data)]).range([0, h]);
+        y = d3.scale.linear().domain([0, d3.max(data)]).range([0, h]),
+        kde = science.stats.kde().sample(data);
 
     // construct the graph
 
 	var vis = d3.select("#graphs")
         .append("div")
             .attr("class", "graph")
-                .append("div")
-                    .attr("class", "graph-title")
-	                .append("svg:svg")
-	                    .attr("width", w)
-	                    .attr("height", h)
-	
+	        .append("svg:svg")
+	            .attr("width", w)
+	            .attr("height", h)
+
     // create the bars
 
 	var bars = vis.selectAll("g.bar")
@@ -37,11 +36,23 @@ $(document).ready(function(){
         .attr("y", function(d, i) { return y(d) })
         .on("mouseover", selected)
         .on("mouseout", deselected)
-        .transition().duration(750)
+        .transition().delay(function(d, i) { return i*40 })
+            .duration(750)
 	        .attr("fill", "#3d71a1")
 	        .attr("width", x.rangeBand())
             .attr("height", y)
             .attr("y", 0)
+
+    /*bars.append("svg:rect")
+        .attr("height", 0)
+        .attr("y", function(d, i) { return y(d) })
+        .on("mouseover", selected)
+        .on("mouseout", deselected)
+        .transition().delay(function(d, i) { return i*40 })
+            .attr("height", y/2)
+            .attr("y", 0)
+            .attr("fill", "#333")
+            .attr("width", x.rangeBand())*/
 
     function selected(d, i) {
         d3.select(this)
@@ -52,6 +63,17 @@ $(document).ready(function(){
         d3.select(this) 
             .attr("fill", "#3d71a1")
     }
+
+    var line = d3.svg.line()
+        .x(function(d) { return x(d[0]); })
+        .y(function(d) { return h - y(d[1]); });
+
+    vis.selectAll("path")
+        .data(d3.values(science.stats.bandwidth))
+        .enter().append("svg:path")
+            .attr("d", function(h) {
+                return line(kde.bandwidth(h)(d3.range(30, 110, .1)));
+            });
 
     // format the bar value text
 
