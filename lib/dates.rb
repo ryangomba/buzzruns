@@ -13,7 +13,7 @@ class TrainingYear
     end
 end
 
-def training_year_from_date(date)
+def training_year_for_date(date)
     year = date.year
     if date.month >= 7 then year = year + 1 end
     TrainingYear.new(year)
@@ -22,21 +22,27 @@ end
 ##### A season type, e.g. cross country
 ##### 0: => XC, 1 => Indoor, 2 => Outdoor
 
-season_names = ['Cross Country', 'Indoor Track', 'Outdoor Track']
-season_short_names = ['XC', 'Indoor', 'Outdoor']
+def season_names
+    return ['Cross Country', 'Indoor Track', 'Outdoor Track']
+end
+
+def season_short_names
+    return ['XC', 'Indoor', 'Outdoor']
+end
 
 class SeasonKind
-    attr_reader :name, :short_name
+    attr_reader :id, :name, :short_name
     def initialize(season_id)
-        @name = season_names[season_id]
-        @short_name = season_short_names[season_id]
+        @id = season_id
+        @name = season_names()[season_id]
+        @short_name = season_short_names()[season_id]
     end
     def to_s
         return @name
     end
 end
 
-def season_kind_from_date(date)
+def season_kind_for_date(date)
     m = date.month
     id = 2
     if (7..11) === m
@@ -53,6 +59,7 @@ class Season
     # todo
 end
 
-def season_from_date(date)
+def season_for_date(date)
+    return 1
 end
 

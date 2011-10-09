@@ -2,7 +2,7 @@ require 'dates'
 
 class Athlete < ActiveRecord::Base
 
-    has_and_belongs_to_many :performances
+    belongs_to :performances
 
     def entry_year
         return self[:year] - 4
