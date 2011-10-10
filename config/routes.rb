@@ -4,6 +4,8 @@ Buzzruns::Application.routes.draw do
 
     resources :athletes
     match "athletes/:id/journal" => "athletes#journal"
+    match "athletes/:id/journal/:start" => "athletes#journal"
+    match "athletes/:id/journal/:start/:end" => "athletes#journal"
     match "athletes/:id/performances" => "athletes#performances"
 
     # Logged-in Athlete
@@ -18,6 +20,7 @@ Buzzruns::Application.routes.draw do
     get "performances/calendar"
     get "performances/year"
     get "performances/season"
+    match 'performances/tfrrs/:id' => 'performances#tfrrs_meet'
 
     # Meets
 
