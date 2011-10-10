@@ -4,7 +4,8 @@ class Athlete < ActiveRecord::Base
 
     has_and_belongs_to_many :performances
     after_create :make_new_user
-    validates :firstname, :lastname, :sex, :year, :metrics, :presence => true
+    belongs_to :performances
+
     def entry_year
         return self[:year] - 4
     end

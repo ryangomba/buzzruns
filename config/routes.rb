@@ -2,12 +2,11 @@ Buzzruns::Application.routes.draw do
 
     root :to => "home#index"
 
-    resources :athletes do
-        member do 
-            get 'journal'
-            get 'performances'
-        end
-    end
+    resources :athletes
+    match "athletes/:id/journal" => "athletes#journal"
+    match "athletes/:id/journal/:start" => "athletes#journal"
+    match "athletes/:id/journal/:start/:end" => "athletes#journal"
+    match "athletes/:id/performances" => "athletes#performances"
 
     # Logged-in Athlete
 
@@ -24,6 +23,7 @@ Buzzruns::Application.routes.draw do
             get "season"
         end
     end
+    match 'performances/tfrrs/:id' => 'performances#tfrrs_meet'
 
     # Meets
 
