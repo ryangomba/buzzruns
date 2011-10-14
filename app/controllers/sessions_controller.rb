@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
             params[:notice] = "Invalid login or password"
             render "new"
         else
-            params[:notice] = "Please log in" 
             render "new"
         end
     end

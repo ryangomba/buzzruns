@@ -1,2 +1,35 @@
-<h1>Admin#athletes</h1>
-<p>Find me in app/views/admin/athletes.html.erb</p>
+<div id="databar">
+	<div id="title">Athletes</div>
+	<ul id="filterbar">
+		<li><%= link_to "All", admin_athletes_path()%></li>
+		<li><%= link_to "Males", admin_athletes_path(:search => {:sex => "male"}, :limit => params[:limit])%></li>
+		<li><%= link_to "Females", admin_athletes_path(:search => {:sex => "female"}, :limit => params[:limit])%></li>
+		<li><%= link_to "50", admin_athletes_path(:search => params[:search], :limit => 50)%></li>
+		<li><%= link_to "100", admin_athletes_path(:search => params[:search], :limit => 100)%></li>
+		<li><%= link_to "2010", admin_athletes_path(:search => {:year => "2010"}, :limit => params[:limit])%></li>
+		<li><%= link_to "2011", admin_athletes_path(:search => {:year => "2011"}, :limit => params[:limit])%></li>
+		<li><%= link_to "2012", admin_athletes_path(:search => {:year => "2012"}, :limit => params[:limit])%></li>
+		<li><%= link_to "2013", admin_athletes_path(:search => {:year => "2013"}, :limit => params[:limit])%></li>
+		<li><%= link_to "2014", admin_athletes_path(:search => {:year => "2014"}, :limit => params[:limit])%></li>
+	</ul>
+</div>
+<table>
+	<tr>
+		<th></th>
+		<th>Name</th>
+		<th>Sex</th>
+		<th>Year</th>
+	</tr>
+	<% i = 0%>
+	<% @athletes.each do |athlete| %>
+		<% if athlete.firstname %>
+		<% i = i + 1%>
+		<tr>
+			<td><%= i %>
+			<td><%= link_to athlete.name, athlete %></td>
+			<td><%= athlete.sex.titleize if athlete.sex %></td>
+			<td><%= athlete.year %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
