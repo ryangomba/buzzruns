@@ -1,9 +1,7 @@
 class MyController < ApplicationController
 
     def dashboard
-        redirect_to :controller => 'athletes',
-                    :action => 'show',
-                    :id => session[:user_id]
+        @athlete = User.find_by_id(session[:user_id]).athlete
     end
 
     def journal
