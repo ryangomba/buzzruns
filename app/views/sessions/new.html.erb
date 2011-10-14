@@ -1,14 +1,21 @@
-<h1>Please login!</h1><br /><br />
 <p id="notice"><%= params[:notice] %></p><br />
-
+<div id="loginbox">
 <%= form_tag '/login' do %>
+<table>
+	<tr>
     <div class="field">
-        <%= label_tag :login %>
-        <%= text_field_tag :login, params[:login] %>
+        <td><%= label_tag :login %></td>
+        <td><%= text_field_tag :login, params[:login] %></td>
     </div>
+	</tr>
+	<tr>
     <div class="field">
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
+        <td><%= label_tag :password %></td>
+        <td><%= password_field_tag :password %></td>
     </div>
-    <div class="actions"><%= submit_tag "Log in" %></div>
+	</tr>
+	
+    <t><td colspan="2" style="text-align: right"><div class="actions"><%= submit_tag "Log in" %></div></td></tr>
+</table>
 <% end %>
+</div>

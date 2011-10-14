@@ -15,7 +15,6 @@ class AthletesController < ApplicationController
     def show
         @athlete = Athlete.find(params[:id])
     end
-
     def journal
         @athlete = Athlete.find(params[:id])
         start_date = params[:start] ? params[:start].to_date : @athlete.start_date
