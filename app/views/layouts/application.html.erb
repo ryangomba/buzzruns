@@ -8,7 +8,8 @@
     <%= javascript_include_tag params[:controller] %>
     <%= csrf_meta_tags %>    
 </head>
-<body>
+<body id="<%= params[:controller] %>">
+	
     <div class="wrapper">
         <div id="header">
             <h1><a href="/">BuzzRuns</a></h1>
@@ -20,7 +21,7 @@
 
                 <% if !@user.nil? %>
                 <div class="nav-section">
-                    <a href="/my/dashboard/"><%= @user.login %></a>
+                    <a href="/my/dashboard/" class="<%= is_active('my') %>"><%= @user.login %></a>
                     <ul>
                         <li><a href="/my/dashboard/">Dashboard</a></li>
 
@@ -49,26 +50,26 @@
 
                 <% else %>
                 <div class="nav-section">
-                    <a href="/login">Login</a>
+                    <a href="/login" class="<%= is_active('login') %>">Login</a>
                 </div>
                 <% end %>
 
                 <!-- GLOBAL VIEWS -->
 
                 <div class="nav-section">
-                    <a href="/athletes/">Athletes</a>
+                    <a href="/athletes/" class="<%= is_active('athletes') %>">Athletes</a>
                 </div>
 
                 <div class="nav-section">
-                    <a href="/meets/">Meets</a>
+                    <a href="/meets/" class="<%= is_active('meets') %>">Meets</a>
                 </div>
 
                 <div class="nav-section">
-                    <a href="/performances/">Records</a>
+                    <a href="/performances/" class="<%= is_active('performances') %>">Records</a>
                 </div>
 
                 <div class="nav-section">
-                    <a href="/blog/">Blog</a>
+                    <a href="/blog/" class="<%= is_active('blog') %>">Blog</a>
                 </div>
 
             </div>

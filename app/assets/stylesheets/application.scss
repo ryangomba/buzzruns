@@ -50,6 +50,7 @@ blockquote, q {
 /* GLOBAL */
 
 body {
+    background-color: #f7f7f7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #444;
@@ -75,10 +76,28 @@ div.split {
     &.right {
         width: 300px;
     }
+    &.left-short {
+        width: 150px;
+    }
+    &.right-wide {
+        width: 790px;
+    }
     float: left;
     &:last-child {
         float: right;
     }
+}
+div.heading {
+    border: solid 1px #ddd;
+    border-bottom: none;
+    background-color: #eee;
+    padding: 20px;
+}
+div.content {
+    border: solid 1px #ddd;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
 /* NAVBAR */
@@ -86,7 +105,7 @@ div.split {
 div#header {
     position: relative;
     margin-top: 40px;
-    height: 100px;
+    height: 80px;
     h1 {
         font-size: 30px;
         font-weight: bold;
@@ -96,31 +115,37 @@ div#header {
     div#navbar {
         position: absolute;
         right: 0px;
-        top: 5px;
+        top: 8px;
         div.nav-section {
             display: inline;
             position: relative;
-            margin-left: 20px;
+            margin-left: 4px;
+            font-size: 14px;
             a {
                 color: #999;
-                font-size: 20px;
-                font-weight: bold;
-                &:hover {
+                font-weight: 400;
+                padding: 4px 12px;
+                border-radius: 20px;
+                &:hover, &.selected {
                     color: #444;
+                }
+                &.selected {
+                    background-color: #ecedef;
+                    box-shadow: inset 0px 1px 1px #bbb;
                 }
             }
             ul {
+                border: solid 1px #eee;
                 display:none;
                 position: absolute;
                 background-color: #fff;
                 left: 0px;
-                padding: 15px 0px;
                 white-space: nowrap;
+                padding: 5px 0px;
                 li a {
-                    padding-bottom: 10px;
+                    padding: 5px 10px;
                     float: left;
                     clear: both;
-                    font-size: 16px;
                 }
                 &:hover {
                     display: block;
@@ -136,6 +161,7 @@ div#header {
 /* GRAPHS */
 
 div#graphs div.graph {
+    background-color: #fff;
     padding: 29px;
     border: solid 1px #ddd;
     margin-bottom: 40px;

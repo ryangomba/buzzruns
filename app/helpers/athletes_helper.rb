@@ -44,6 +44,7 @@ module AthletesHelper
                 milage_array.push(entry ? entry.milage : 0)
             end
         end
+        puts milage_array
         return milage_array
     end
 

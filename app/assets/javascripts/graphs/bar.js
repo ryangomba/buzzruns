@@ -1,7 +1,7 @@
 // Based on http://bl.ocks.org/900762 by John Firebaugh
 
-$(document).ready(function(){
-	
+$(document).ready(function() {
+
     // set width, height of graph & data
 
 	var w = 900,
