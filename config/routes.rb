@@ -16,6 +16,7 @@ Buzzruns::Application.routes.draw do
 
     # Performances
 
+
     resources :performances
     get "performances/calendar"
     get "performances/year"
@@ -31,7 +32,6 @@ Buzzruns::Application.routes.draw do
     resources :events
 
     # Admin Views
-
     get "admin/athletes"
     get "admin/milage"
     get "admin/performances"

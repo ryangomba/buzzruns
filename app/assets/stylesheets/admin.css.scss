@@ -1,3 +1,56 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+	font-size: 12px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+th {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #474747;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+}
+
+td {
+	padding: 8px;
+	background: rgb(135,135,135);
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	border-top: 1px solid transparent;
+}
+
+tr:hover td
+{
+	background: rgb(200,200,200);
+	color: #000;
+}
+
+#databar {
+    
+    padding: 8px;
+    background: #474747;
+    color: #fff;
+    border-bottom: 5px solid #fff;
+    
+    ul {
+        float: right;
+    }
+    
+    li {
+        display: inline-block;
+        padding-right: 10px;
+    }
+    
+    #title {
+        display: inline-block;
+        font-weight: bold;
+    }
+}
+
