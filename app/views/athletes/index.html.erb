@@ -2,17 +2,19 @@
 
 <% split_sexes(@athletes).each_pair do |sex, group| %>
 <div class="split half">
-    <h1><%= sex %> (<%= group.length %>)</h1>
-    
-    <!-- FOR EACH ATHLETE -->
 
-    <% group.each do |athlete| %>
-        <%= link_to "#{athlete.firstname} #{athlete.lastname}", athlete %>
-        <%= athlete.year %>
-        <%= link_to 'Edit', edit_athlete_path(athlete.id) %>
-        <%= link_to 'Delete', athlete_path(athlete.id), :confirm => 'Are you sure?', :method => 'delete' %>
-        <br />
-    <% end %>
+    <div class="heading"><h1><%= sex %> (<%= group.length %>)</h1></div>
+
+    <div class="content">
+        <!-- FOR EACH ATHLETE -->
+        <% group.each do |athlete| %>
+            <%= link_to "#{athlete.firstname} #{athlete.lastname}", athlete %>
+            <%= athlete.year %>
+            <%= link_to 'Edit', edit_athlete_path(athlete.id) %>
+            <%= link_to 'Delete', athlete_path(athlete.id), :confirm => 'Are you sure?', :method => 'delete' %>
+            <br />
+        <% end %>
+    </div>
 
 </div>
 <% end %>

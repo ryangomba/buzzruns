@@ -41,6 +41,9 @@ Buzzruns::Application.routes.draw do
     match 'login' => 'sessions#create'
     match 'logout' => 'sessions#destroy'
     get "sessions_path", :to => "sessions#create"
+    
+    match '/auth/facebook/callback' => 'services#create'
+    resources :services, :only => [:index, :create]
 
     # Sample of regular route:
     #   match 'products/:id' => 'catalog#view'
